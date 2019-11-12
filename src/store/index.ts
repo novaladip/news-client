@@ -1,6 +1,8 @@
 import { createStore } from "easy-peasy";
+
 import { AuthenticationModel } from "./authentication/model";
 import { authenticationModel } from "./authentication";
+export * from "./hooks";
 
 export interface StoreModel {
   authentication: AuthenticationModel;
