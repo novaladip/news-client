@@ -1,5 +1,6 @@
 import React, { lazy } from "react";
-import { Router } from "@reach/router";
+
+import { FadeTransitionRouter } from "src/components";
 
 const LoginPage = lazy(() => import("src/pages/Login.page"));
 const RegisterPage = lazy(() => import("src/pages/Register.page"));
@@ -10,13 +11,13 @@ const ShowNews = lazy(() => import("src/pages/ShowNews.page"));
 
 export function AppRouter() {
   return (
-    <Router>
+    <FadeTransitionRouter>
       <LoginPage path="/login" />
       <RegisterPage path="/register" />
       <AddNewsPage path="/news/add" />
       <EditNewsPage path="news/{newsId}/edit" newsId="" />
       <HomePage path="/" />
       <ShowNews path="news/{newsId}" newsId="" />
-    </Router>
+    </FadeTransitionRouter>
   );
 }
