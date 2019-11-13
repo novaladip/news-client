@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DefaultRouter } from "src/types";
+import { Register } from "src/components";
 
 export default function RegisterPage(props: DefaultRouter) {
-  return (
-    <div>
-      <h1>Register Page</h1>
-    </div>
-  );
+  useEffect(() => {
+    document.title = "Sign Up";
+  }, []);
+
+  return <Register />;
 }
