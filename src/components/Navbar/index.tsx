@@ -92,7 +92,10 @@ export function NavItem() {
           </MenuList>
         </Menu>
       ) : (
-        <NavLink to="login">Sign In</NavLink>
+        <>
+          <NavLink to="/login">Sign In</NavLink>
+          <NavLink to="/register">Sign Up</NavLink>
+        </>
       )}
     </Box>
   );
