@@ -32,6 +32,7 @@ export const authenticationModel: AuthenticationModel = {
     const { token } = await authenticationServices.signUp(payload);
     saveJwtToLocalStorage(token);
     setDefaultAuthJwt(token);
+    action.setUser(decodeJwt(token));
     action.setIsAuthenticated(true);
   })
 };

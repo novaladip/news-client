@@ -6,6 +6,7 @@ import { Container } from "src/components/shared";
 import { SignInDto } from "src/store/authentication/model";
 import { useStoreActions } from "src/store";
 import { LoginForm } from "./LoginForm";
+import { navigate } from "@reach/router";
 
 export function Login() {
   const toast = useToast();
@@ -18,6 +19,7 @@ export function Login() {
         setIsLoading(true);
         await signIn(signInDto);
         setIsLoading(false);
+        navigate("/");
         toast({
           title: "Sign in successfully",
           status: "success",
