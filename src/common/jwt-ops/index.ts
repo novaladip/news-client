@@ -1,3 +1,6 @@
+import jwtDecode from "jwt-decode";
+import { JwtPayload } from "src/types";
+
 const jwtKey = "jwt";
 
 export function getJwtFromLocalStorage(): string | null {
@@ -10,6 +13,10 @@ export function saveJwtToLocalStorage(jwt: string): void {
 
 export function removeJwtFromLocalStorage(): void {
   localStorage.removeItem(jwtKey);
+}
+
+export function decodeJwt(jwt: string): JwtPayload {
+  return jwtDecode<JwtPayload>(jwt);
 }
 
 export function isTokenExpired(exp: number): boolean {

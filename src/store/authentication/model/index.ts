@@ -1,4 +1,5 @@
 import { Action, Thunk } from "easy-peasy";
+import { JwtPayload } from "src/types";
 
 export interface SignInDto {
   email: string;
@@ -14,7 +15,9 @@ export interface SignUpDto {
 
 export interface AuthenticationModel {
   isAuthenticated: boolean;
+  user: JwtPayload;
   setIsAuthenticated: Action<AuthenticationModel, boolean>;
+  setUser: Action<AuthenticationModel, JwtPayload>;
   signUp: Thunk<AuthenticationModel, SignUpDto>;
   signIn: Thunk<AuthenticationModel, SignInDto>;
 }
