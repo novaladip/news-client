@@ -21,7 +21,7 @@ export function RegisterForm({ isLoading, onSubmit }: Props) {
         email,
         password,
         name,
-        password_comfirmation: passwordComfirmation
+        password_confirmation: passwordComfirmation
       });
     },
     [email, name, password, onSubmit, passwordComfirmation]

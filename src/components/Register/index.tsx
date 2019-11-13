@@ -13,10 +13,10 @@ export function Register() {
   const signUp = useStoreActions(actions => actions.authentication.signUp);
 
   const onSubmit = useCallback(
-    async (signInDto: SignUpDto) => {
+    async (signUpDto: SignUpDto) => {
       try {
         setIsLoading(true);
-        await signUp(signInDto);
+        await signUp(signUpDto);
         setIsLoading(false);
         toast({
           title: "Register successfully",
@@ -45,7 +45,7 @@ export function Register() {
         rounded="lg"
         p={["5", "7", "9", "11"]}
       >
-        <Image src={LoginIcon} h="30vh" marginBottom={10} />
+        <Image alt="login icon" src={LoginIcon} h="30vh" marginBottom={10} />
         <RegisterForm isLoading={isLoading} onSubmit={onSubmit} />
       </Box>
     </Container>

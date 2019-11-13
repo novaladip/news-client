@@ -20,7 +20,10 @@ async function signIn(signInDto: SignInDto): Promise<SignInResponseDto> {
 
 async function signUp(signUpDto: SignUpDto): Promise<SignUpResponseDto> {
   try {
-    const res = await api.post<SignUpResponseDto>("/api/register", signUpDto);
+    const res = await api.post<SignUpResponseDto>("/api/register", {
+      ...signUpDto,
+      isAdmin: "false"
+    });
     return await res.data;
   } catch (error) {
     throw handleAxiosError(error);
