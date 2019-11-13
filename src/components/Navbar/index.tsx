@@ -65,7 +65,9 @@ function NavLink({
 }
 
 export function NavItem() {
-  const { isAuthenticated } = useStoreState(state => state.authentication);
+  const { isAuthenticated, user } = useStoreState(
+    state => state.authentication
+  );
   const setIsAuthenticated = useStoreActions(
     actions => actions.authentication.setIsAuthenticated
   );
@@ -73,24 +75,14 @@ export function NavItem() {
   return (
     <Box fontSize={["sm", "md", "lg", "xl"]}>
       <NavLink to="/">News</NavLink>
-      {isAuthenticated ? (
-        <Menu>
-          <MenuButton>
-            Pengaturan
-            <Icon name="chevron-down" />
-          </MenuButton>
 
-          <MenuList>
-            <MenuItem>
-              <NavLink to="/settings/change-password">Ganti Password</NavLink>
-            </MenuItem>
-            <MenuItem>
-              <NavLink to="/login" onClick={() => setIsAuthenticated(false)}>
-                Keluar
-              </NavLink>
-            </MenuItem>
-          </MenuList>
-        </Menu>
+      {isAuthenticated ? (
+        <>
+          <NavLink to="/add/news">Add News</NavLink>
+          <NavLink to="/login" onClick={() => setIsAuthenticated(false)}>
+            Sign Out
+          </NavLink>
+        </>
       ) : (
         <>
           <NavLink to="/login">Sign In</NavLink>
