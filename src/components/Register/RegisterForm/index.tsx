@@ -62,7 +62,7 @@ export function RegisterForm({ isLoading, onSubmit }: Props) {
           variant="solid"
           variantColor="blue"
           isLoading={isLoading}
-          loadingText="Loging in"
+          loadingText="Signing Up"
         >
           Sign Up
         </Button>
