@@ -8,6 +8,7 @@ export interface SignInDto {
 export interface SignUpDto {
   email: string;
   password: string;
+  password_comfirmation: string;
   name: string;
 }
 
