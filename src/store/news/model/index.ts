@@ -45,11 +45,17 @@ export interface AddNewsDto {
   images: string;
 }
 
+export interface Items {
+  current_page: number;
+  total: number;
+  data: News[];
+}
+
 export interface NewsModel {
   item: News;
-  items: News[];
+  items: Items;
   addItems: Action<NewsModel, News>;
-  setItems: Action<NewsModel, News[]>;
+  setItems: Action<NewsModel, Items>;
   setItem: Action<NewsModel, News>;
   fetchItems: Thunk<NewsModel, FetchItemsDto>;
   fetchItem: Thunk<NewsModel, FetchItemDto>;

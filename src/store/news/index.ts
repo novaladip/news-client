@@ -4,9 +4,16 @@ import { fetchItem, fetchItems, addNews } from "./service";
 
 export const newsModel: NewsModel = {
   item: {} as News,
-  items: [],
+  items: {
+    current_page: 1,
+    total: 1,
+    data: []
+  },
   addItems: action((state, payload) => {
-    state.items = [payload, ...state.items];
+    state.items = {
+      ...state.items,
+      data: [payload, ...state.items.data]
+    };
   }),
   setItem: action((state, payload) => {
     state.item = payload;
