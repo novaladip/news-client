@@ -1,16 +1,5 @@
 import React, { useCallback } from "react";
-import {
-  Flex,
-  Image,
-  Text,
-  Box,
-  Menu,
-  MenuButton,
-  MenuItem,
-  Icon,
-  Link,
-  MenuList
-} from "@chakra-ui/core";
+import { Flex, Image, Text, Box, Link } from "@chakra-ui/core";
 import { navigate } from "@reach/router";
 
 import { useStoreState, useStoreActions } from "src/store";
@@ -78,7 +67,7 @@ export function NavItem() {
 
       {isAuthenticated ? (
         <>
-          <NavLink to="/add/news">Add News</NavLink>
+          {user.isAdmin === 1 && <NavLink to="/add/news">Add News</NavLink>}
           <NavLink to="/login" onClick={() => setIsAuthenticated(false)}>
             Sign Out
           </NavLink>

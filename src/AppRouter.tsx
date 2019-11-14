@@ -14,7 +14,7 @@ export function AppRouter() {
     <FadeTransitionRouter>
       <LoginPage path="/login" />
       <RegisterPage path="/register" />
-      <AddNewsPage path="/news/add" />
+      <AddNewsPage path="/add/news" />
       <EditNewsPage path="news/{newsId}/edit" newsId="" />
       <HomePage path="/" />
       <ShowNews path="news/{newsId}" newsId="" />
