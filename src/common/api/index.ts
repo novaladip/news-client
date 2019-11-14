@@ -15,5 +15,5 @@ export function handleAxiosError(error: AxiosError): any {
 }
 
 export function setDefaultAuthJwt(jwt: string): void {
-  api.defaults.headers["Authorization"] = jwt;
+  api.defaults.headers["Authorization"] = `Bearer ${jwt}`;
 }
