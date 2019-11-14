@@ -68,7 +68,7 @@ export function ImageInput({ result, setResult }: Props) {
     if (!isEmpty(image)) {
       uploadImage(image as FileList);
     }
-  }, [image, uploadImage]);
+  }, [image]);
 
   return (
     <Box
@@ -101,7 +101,9 @@ export function ImageInput({ result, setResult }: Props) {
           <CircularProgressLabel>{progress}%</CircularProgressLabel>
         </CircularProgress>
       )}
-      {isError && <Button>Retry</Button>}
+      {isError && (
+        <Button onClick={() => uploadImage(image as FileList)}>Retry</Button>
+      )}
     </Box>
   );
 }
