@@ -6,6 +6,7 @@ interface Props extends DefaultRouter {
 }
 
 export default function ShowNewsPage(props: Props) {
+  document.title = "PL NEWS";
   return (
     <div>
       <h1>Show News page</h1>
