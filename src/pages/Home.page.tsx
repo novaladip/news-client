@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 import { DefaultRouter } from "src/types";
+import { News } from "src/components";
 
 export default function HomePage(props: DefaultRouter) {
   useEffect(() => {
     document.title = "PL NEWS";
   }, []);
-  return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
-  );
+  return <News />;
 }

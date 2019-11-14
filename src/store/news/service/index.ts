@@ -3,8 +3,15 @@ import { handleAxiosError, api } from "src/common";
 
 export async function fetchItems(fetchItemsDto: FetchItemsDto): Promise<Items> {
   try {
-    const res = await api.get<Items>("api/news", { params: fetchItemsDto });
-    return await res.data;
+    const res = await api.get<{ data: Items }>("api/news", {
+      params: fetchItemsDto
+    });
+    const data = await res.data.data;
+    return {
+      current_page: data.current_page,
+      total: data.total,
+      data: data.data
+    };
   } catch (error) {
     throw handleAxiosError(error);
   }

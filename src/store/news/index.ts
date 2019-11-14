@@ -27,8 +27,8 @@ export const newsModel: NewsModel = {
     action.setItem(news);
   }),
   fetchItems: thunk(async (action, payload) => {
-    const news = await fetchItems(payload);
-    action.setItems(news);
+    const data = await fetchItems(payload);
+    action.setItems(data);
   }),
   addNews: thunk(async (action, payload) => {
     const news = await addNews(payload);
