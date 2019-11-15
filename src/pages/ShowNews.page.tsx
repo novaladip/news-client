@@ -1,5 +1,6 @@
 import React from "react";
 import { DefaultRouter } from "src/types";
+import { ShowNews } from "src/components";
 
 interface Props extends DefaultRouter {
   newsId: string;
@@ -7,9 +8,5 @@ interface Props extends DefaultRouter {
 
 export default function ShowNewsPage(props: Props) {
   document.title = "PL NEWS";
-  return (
-    <div>
-      <h1>Show News page</h1>
-    </div>
-  );
+  return <ShowNews newsId={props.newsId} />;
 }

@@ -1,4 +1,11 @@
-import { FetchItemsDto, News, FetchItemDto, AddNewsDto, Items } from "../model";
+import {
+  FetchItemsDto,
+  News,
+  FetchItemDto,
+  AddNewsDto,
+  Items,
+  RemoveNewsDto
+} from "../model";
 import { handleAxiosError, api } from "src/common";
 
 export async function fetchItems(fetchItemsDto: FetchItemsDto): Promise<Items> {
@@ -30,6 +37,14 @@ export async function addNews(addNewsDto: AddNewsDto): Promise<News> {
   try {
     const res = await api.post<{ data: News }>("api/news", addNewsDto);
     return await res.data.data;
+  } catch (error) {
+    throw handleAxiosError(error);
+  }
+}
+
+export async function removeNews(removeNewsDto: RemoveNewsDto): Promise<void> {
+  try {
+    await api.delete("api/news/" + removeNewsDto.id);
   } catch (error) {
     throw handleAxiosError(error);
   }

@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useStoreState, useStoreActions } from "src/store";
 import { useToast } from "@chakra-ui/core";
 import { NewsCard } from "./NewsCard";
-import { Container, Layout, GridLayout } from "../shared";
+import { Container, Layout, GridLayout, LoadingIndicator } from "../shared";
+import { isEmpty } from "src/common";
 
 export function News() {
   const toast = useToast();
@@ -25,12 +26,15 @@ export function News() {
   }, [fetchItems, toast, items.current_page]);
 
   useEffect(() => {
-    getItems();
-  }, []);
+    if (isEmpty(items.data) && !isLoading) {
+      getItems();
+    }
+  }, [items.data, isLoading, getItems]);
 
   return (
     <Container>
       <Layout>
+        {isLoading && <LoadingIndicator />}
         <GridLayout>
           {items.data.map(item => (
             <NewsCard

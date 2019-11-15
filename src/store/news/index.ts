@@ -1,6 +1,6 @@
 import { NewsModel, News } from "./model";
 import { action, thunk } from "easy-peasy";
-import { fetchItem, fetchItems, addNews } from "./service";
+import { fetchItem, fetchItems, addNews, removeNews } from "./service";
 
 export const newsModel: NewsModel = {
   item: {} as News,
@@ -33,5 +33,8 @@ export const newsModel: NewsModel = {
   addNews: thunk(async (action, payload) => {
     const news = await addNews(payload);
     action.addItems(news);
+  }),
+  removeNews: thunk(async (action, payload) => {
+    await removeNews(payload);
   })
 };

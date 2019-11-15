@@ -36,13 +36,17 @@ export interface FetchItemsDto {
 }
 
 export interface FetchItemDto {
-  id: number;
+  id: string;
 }
 
 export interface AddNewsDto {
   title: string;
   body: string;
   images: string;
+}
+
+export interface RemoveNewsDto {
+  id: string;
 }
 
 export interface Items {
@@ -59,5 +63,6 @@ export interface NewsModel {
   setItem: Action<NewsModel, News>;
   fetchItems: Thunk<NewsModel, FetchItemsDto>;
   fetchItem: Thunk<NewsModel, FetchItemDto>;
+  removeNews: Thunk<NewsModel, RemoveNewsDto>;
   addNews: Thunk<NewsModel, AddNewsDto>;
 }

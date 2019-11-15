@@ -7,7 +7,7 @@ const RegisterPage = lazy(() => import("src/pages/Register.page"));
 const AddNewsPage = lazy(() => import("src/pages/AddNews.page"));
 const EditNewsPage = lazy(() => import("src/pages/EditNews.page"));
 const HomePage = lazy(() => import("src/pages/Home.page"));
-const ShowNews = lazy(() => import("src/pages/ShowNews.page"));
+const ShowNewsPage = lazy(() => import("src/pages/ShowNews.page"));
 
 export function AppRouter() {
   return (
@@ -15,9 +15,9 @@ export function AppRouter() {
       <LoginPage path="/login" />
       <RegisterPage path="/register" />
       <AddNewsPage path="/add/news" />
-      <EditNewsPage path="news/{newsId}/edit" newsId="" />
+      <EditNewsPage path="/news/:newsId/edit" newsId="" />
       <HomePage path="/" />
-      <ShowNews path="news/{newsId}" newsId="" />
+      <ShowNewsPage path="/news/:newsId" newsId="" />
     </FadeTransitionRouter>
   );
 }
