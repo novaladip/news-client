@@ -14,9 +14,7 @@ interface Props {
 
 export function ShowNews(props: Props) {
   const toast = useToast();
-  const { isAuthenticated, user } = useStoreState(
-    state => state.authentication
-  );
+  const { user } = useStoreState(state => state.authentication);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -107,7 +105,7 @@ export function ShowNews(props: Props) {
         </Text>
         <Image src={news.images} mb={5} alignSelf="center" />
         <div dangerouslySetInnerHTML={{ __html: news.body }} />
-        {isAuthenticated && <CommentForm />}
+        <CommentForm newsId={props.newsId} />
         <NewsComments />
       </Layout>
     </Container>

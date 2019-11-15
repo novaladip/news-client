@@ -49,6 +49,11 @@ export interface RemoveNewsDto {
   id: string;
 }
 
+export interface AddCommentDto {
+  newsId: string;
+  text: string;
+}
+
 export interface Items {
   current_page: number;
   total: number;
@@ -65,4 +70,6 @@ export interface NewsModel {
   fetchItem: Thunk<NewsModel, FetchItemDto>;
   removeNews: Thunk<NewsModel, RemoveNewsDto>;
   addNews: Thunk<NewsModel, AddNewsDto>;
+  addComment: Thunk<NewsModel, AddCommentDto>;
+  addCommentItem: Action<NewsModel, NewsComment>;
 }

@@ -4,7 +4,9 @@ import {
   FetchItemDto,
   AddNewsDto,
   Items,
-  RemoveNewsDto
+  RemoveNewsDto,
+  AddCommentDto,
+  NewsComment
 } from "../model";
 import { handleAxiosError, api } from "src/common";
 
@@ -45,6 +47,20 @@ export async function addNews(addNewsDto: AddNewsDto): Promise<News> {
 export async function removeNews(removeNewsDto: RemoveNewsDto): Promise<void> {
   try {
     await api.delete("api/news/" + removeNewsDto.id);
+  } catch (error) {
+    throw handleAxiosError(error);
+  }
+}
+
+export async function addComment(
+  addCommentDto: AddCommentDto
+): Promise<NewsComment> {
+  try {
+    const res = await api.post<{ data: NewsComment }>(
+      `/api/news/${addCommentDto.newsId}/comment`,
+      { text: addCommentDto.text }
+    );
+    return await res.data.data;
   } catch (error) {
     throw handleAxiosError(error);
   }

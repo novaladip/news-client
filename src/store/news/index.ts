@@ -1,6 +1,12 @@
 import { NewsModel, News } from "./model";
 import { action, thunk } from "easy-peasy";
-import { fetchItem, fetchItems, addNews, removeNews } from "./service";
+import {
+  fetchItem,
+  fetchItems,
+  addNews,
+  removeNews,
+  addComment
+} from "./service";
 
 export const newsModel: NewsModel = {
   item: {} as News,
@@ -36,5 +42,14 @@ export const newsModel: NewsModel = {
   }),
   removeNews: thunk(async (action, payload) => {
     await removeNews(payload);
+  }),
+  addCommentItem: action((state, payload) => {
+    if (state.item.comments) {
+      state.item.comments = [payload, ...state.item.comments];
+    }
+  }),
+  addComment: thunk(async (action, payload) => {
+    const data = await addComment(payload);
+    action.addCommentItem(data);
   })
 };
