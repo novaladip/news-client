@@ -59,6 +59,11 @@ export interface DeleteCommentDto {
   newsId: string;
 }
 
+export interface UpdateNewsDto {
+  newsId: string;
+  data: { title: string; body: string; images: string };
+}
+
 export interface Items {
   current_page: number;
   total: number;
@@ -79,4 +84,5 @@ export interface NewsModel {
   addCommentItem: Action<NewsModel, NewsComment>;
   deleteComment: Thunk<NewsModel, DeleteCommentDto>;
   removeCommentItem: Action<NewsModel, { commentId: number }>;
+  updateNews: Thunk<NewsModel, UpdateNewsDto>;
 }

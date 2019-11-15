@@ -7,7 +7,8 @@ import {
   RemoveNewsDto,
   AddCommentDto,
   NewsComment,
-  DeleteCommentDto
+  DeleteCommentDto,
+  UpdateNewsDto
 } from "../model";
 import { handleAxiosError, api } from "src/common";
 
@@ -74,6 +75,14 @@ export async function deleteComment(
     await api.delete(
       `/api/news/${deleteCommentDto.newsId}/comment/${deleteCommentDto.commentId}`
     );
+  } catch (error) {
+    throw handleAxiosError(error);
+  }
+}
+
+export async function updateNews(updateNewsDto: UpdateNewsDto): Promise<void> {
+  try {
+    await api.put(`/api/news/${updateNewsDto.newsId}`, updateNewsDto.data);
   } catch (error) {
     throw handleAxiosError(error);
   }

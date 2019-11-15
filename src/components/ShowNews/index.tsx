@@ -84,6 +84,7 @@ export function ShowNews(props: Props) {
               color="white"
               _hover={{ backgroundColor: "#3468ba" }}
               w="40%"
+              onClick={() => navigate(`${props.newsId}/edit`)}
             >
               Edit
             </Button>

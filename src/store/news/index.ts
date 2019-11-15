@@ -6,7 +6,8 @@ import {
   addNews,
   removeNews,
   addComment,
-  deleteComment
+  deleteComment,
+  updateNews
 } from "./service";
 
 export const newsModel: NewsModel = {
@@ -63,5 +64,9 @@ export const newsModel: NewsModel = {
   deleteComment: thunk(async (action, payload) => {
     await deleteComment(payload);
     action.removeCommentItem({ commentId: payload.commentId });
+  }),
+  updateNews: thunk(async (action, payload) => {
+    await updateNews(payload);
+    await action.fetchItems({ page: 1 });
   })
 };
