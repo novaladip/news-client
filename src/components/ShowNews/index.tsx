@@ -106,7 +106,10 @@ export function ShowNews(props: Props) {
         <Image src={news.images} mb={5} alignSelf="center" />
         <div dangerouslySetInnerHTML={{ __html: news.body }} />
         <CommentForm newsId={props.newsId} />
-        <NewsComments />
+        <NewsComments
+          newsId={props.newsId}
+          comments={news.comments ? news.comments : []}
+        />
       </Layout>
     </Container>
   );

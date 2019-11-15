@@ -5,7 +5,8 @@ import {
   fetchItems,
   addNews,
   removeNews,
-  addComment
+  addComment,
+  deleteComment
 } from "./service";
 
 export const newsModel: NewsModel = {
@@ -51,5 +52,16 @@ export const newsModel: NewsModel = {
   addComment: thunk(async (action, payload) => {
     const data = await addComment(payload);
     action.addCommentItem(data);
+  }),
+  removeCommentItem: action((state, payload) => {
+    if (state.item.comments) {
+      state.item.comments = state.item.comments.filter(
+        comment => comment.id !== payload.commentId
+      );
+    }
+  }),
+  deleteComment: thunk(async (action, payload) => {
+    await deleteComment(payload);
+    action.removeCommentItem({ commentId: payload.commentId });
   })
 };

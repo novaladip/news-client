@@ -21,13 +21,13 @@ export interface News {
 }
 
 export interface NewsComment {
-  id: string;
+  id: number;
   text: string;
   created_at: string;
   updated_at: string;
-  news_id: string;
-  user_id: string;
-  created_by: User;
+  news_id: number;
+  user_id: number;
+  user: User;
 }
 
 export interface FetchItemsDto {
@@ -54,6 +54,11 @@ export interface AddCommentDto {
   text: string;
 }
 
+export interface DeleteCommentDto {
+  commentId: number;
+  newsId: string;
+}
+
 export interface Items {
   current_page: number;
   total: number;
@@ -72,4 +77,6 @@ export interface NewsModel {
   addNews: Thunk<NewsModel, AddNewsDto>;
   addComment: Thunk<NewsModel, AddCommentDto>;
   addCommentItem: Action<NewsModel, NewsComment>;
+  deleteComment: Thunk<NewsModel, DeleteCommentDto>;
+  removeCommentItem: Action<NewsModel, { commentId: number }>;
 }
