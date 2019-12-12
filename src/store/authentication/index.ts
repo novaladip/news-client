@@ -24,7 +24,7 @@ export const authenticationModel: AuthenticationModel = {
   signIn: thunk(async (action, payload) => {
     const { token } = await authenticationServices.signIn(payload);
     saveJwtToLocalStorage(token);
-    setDefaultAuthJwt(`Bearer ${token}`);
+    setDefaultAuthJwt(token);
     action.setUser(decodeJwt(token));
     action.setIsAuthenticated(true);
   }),

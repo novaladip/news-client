@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useToast } from '@chakra-ui/core';
+
 import { useStoreState, useStoreActions } from "src/store";
-import { useToast } from "@chakra-ui/core";
-import { NewsCard } from "./NewsCard";
-import { Container, Layout, GridLayout, LoadingIndicator } from "../shared";
 import { isEmpty } from "src/common";
+import { NewsCard } from "./NewsCard";
 import { SearchField } from "./SearchField";
+import { Container, Layout, GridLayout, LoadingIndicator } from "../shared";
 
 export function News() {
   const toast = useToast();
@@ -19,11 +20,12 @@ export function News() {
         await fetchItems({ page: items.current_page, search: search });
         setIsLoading(false);
       } catch (error) {
-        setIsLoading(false);
         toast({
           title: "Failed to get news",
           status: "error"
         });
+      } finally {
+        setIsLoading(false);
       }
     },
     [fetchItems, toast, items.current_page]
@@ -38,8 +40,8 @@ export function News() {
   return (
     <Container>
       <Layout>
-        <SearchField onSubmit={getItems} />
-        {isLoading ? (
+      <SearchField onSubmit={getItems}/>
+      {isLoading ? (
           <LoadingIndicator />
         ) : (
           <GridLayout>

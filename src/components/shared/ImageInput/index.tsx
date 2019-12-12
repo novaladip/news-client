@@ -38,7 +38,7 @@ export function ImageInput({ result, setResult }: Props) {
           method: "POST",
           data: formData,
           onUploadProgress: p => {
-            setProgress(parseInt(((p.loaded / p.total) * 100).toFixed()));
+            setProgress(parseInt(((p.loaded / p.total) * 99).toFixed()));
           }
         });
 
@@ -52,6 +52,7 @@ export function ImageInput({ result, setResult }: Props) {
           position: "top"
         });
       } catch (error) {
+        console.log(error);
         setIsError(true);
         setIsLoading(false);
         toast({

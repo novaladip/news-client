@@ -24,6 +24,7 @@ export async function fetchItems(fetchItemsDto: FetchItemsDto): Promise<Items> {
       data: data.data
     };
   } catch (error) {
+    console.log(error);
     throw handleAxiosError(error);
   }
 }
